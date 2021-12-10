@@ -12,12 +12,12 @@ Feature: ScenarioNumbering
     When the browser finished loading
     Then I can begin testing
 
-    Scenario: 1 - Test without tag(<language>)
+    Scenario: Test without tag(<language>)
     Given I am on Home page (<language>) user
     Then I should be on Home page
 
     @tag1
-    Scenario Outline: 2 - Test language (<language>)
+    Scenario Outline: Test language (<language>)
       Given I am on Home page <language> user
       When <language> language is choosen
       Then I should be on Home page
@@ -33,7 +33,7 @@ Feature: ScenarioNumbering
   Rule: Rule2
 
     @tag1
-    Scenario Outline: 3 - Test cat (<language>)
+    Scenario Outline: Test cat (<language>)
       Given I am on Home page <language> user
       When <language> language is choosen
       Then I should be on Home page

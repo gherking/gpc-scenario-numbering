@@ -10,7 +10,7 @@ const DEFAULT_CONFIG: ScenarioNumberingConfig = {
 
 class ScenarioNumbering implements PreCompiler {    
     private config: ScenarioNumberingConfig;
-ó
+    private i: number = 0;
     constructor(config?: ScenarioNumberingConfig) {
         this.config = {
             ...DEFAULT_CONFIG,
@@ -19,11 +19,20 @@ class ScenarioNumbering implements PreCompiler {
     }
 
     onFeature(feature: Feature) {
-        let i: number = 0;
         feature.elements.forEach((element: Element | Rule) => {
+            if (!(element instanceof Background || element instanceof Rule)) {
+                element.name = this.config.format
+                    .replace(/\$\{i\}/g, `${++this.i}`)
+                    .replace(/\$\{name\}/g, element.name);
+            }
+        });
+    }
+
+    onRule(rule: Rule) {
+        rule.elements.forEach((element: Element) => {
             if (!(element instanceof Background)) {
                 element.name = this.config.format
-                    .replace(/\$\{i\}/g, `${++i}`)
+                    .replace(/\$\{i\}/g, `${++this.i}`)
                     .replace(/\$\{name\}/g, element.name);
             }
         });

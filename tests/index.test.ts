@@ -9,21 +9,24 @@ const loadTestFeatureFile = async (file: string): Promise<Document> => {
 }
 
 describe("Scenario numbering", ()=> {
-    let base: Document;
+    let base1: Document;
+    let base2: Document;
 
     beforeAll(async () => {
-        base = await loadTestFeatureFile("input.feature");
+        base1 = await loadTestFeatureFile("input.feature");
+        base2 = await loadTestFeatureFile("input2.feature");
     });
 
     test("should process feature files with default config", async () => {
         const expected = await loadTestFeatureFile("expected.1.feature");
-        const actual = process(base, new ScenarioNumbering());
+        const actual = process(base1, new ScenarioNumbering());
+
         expect(actual[0]).toEqual(expected);
     });
 
     test("should process feature files with custom config", async () => {
         const expected = await loadTestFeatureFile("expected.2.feature");
-        const actual = process(base, new ScenarioNumbering({
+        const actual = process(base2, new ScenarioNumbering({
             format: '${i} - ${name}'
         }));
 
