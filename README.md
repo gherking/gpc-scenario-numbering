@@ -1,6 +1,6 @@
 # gpc-scenario-numbering
 
-The ScenarioNumbering precompiler is responsible to add an index to all scenario and scenario outlines.
+The ScenarioNumbering precompiler is responsible for adding an index to all scenarios and scenario outlines.
 
 ## Example
 
