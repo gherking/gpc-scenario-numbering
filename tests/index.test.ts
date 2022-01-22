@@ -1,6 +1,6 @@
 import { load, process } from "gherking";
 import { Document } from "gherkin-ast";
-const ScenarioNumbering = require("../src");
+import ScenarioNumbering = require("../src");
 
 const loadTestFeatureFile = async (file: string): Promise<Document> => {
     const ast = await load(`./tests/data/${file}`);

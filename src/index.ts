@@ -3,8 +3,8 @@
 import { Background, Feature, Element, Rule } from 'gherkin-ast';
 import { PreCompiler } from 'gherking';
 import { ScenarioNumberingConfig } from './types';
-
-const debug = require("debug");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const debug = require("debug")("gpc:scenario-numbering");
 
 const DEFAULT_CONFIG: ScenarioNumberingConfig = {
     format: '${i}. ${name}'
