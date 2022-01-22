@@ -1,9 +1,9 @@
 import { load, process } from "gherking";
-import { Document } from "gherkin-ast";
+import { Document, pruneID } from "gherkin-ast";
 import ScenarioNumbering = require("../src");
 
 const loadTestFeatureFile = async (file: string): Promise<Document> => {
-    const ast = await load(`./tests/data/${file}`);
+    const ast: Document[] = pruneID(await load(`./tests/data/${file}`)) as Document[];
     delete ast[0].uri;
     return ast[0];
 }
@@ -19,16 +19,16 @@ describe("Scenario numbering", ()=> {
 
     test("should process feature files with default config", async () => {
         const expected = await loadTestFeatureFile("expected.1.feature");
-        const actual = process(base1, new ScenarioNumbering());
+        const actual = pruneID(process(base1, new ScenarioNumbering())) as Document[];
 
         expect(actual[0]).toEqual(expected);
     });
 
     test("should process feature files with custom config", async () => {
         const expected = await loadTestFeatureFile("expected.2.feature");
-        const actual = process(base2, new ScenarioNumbering({
+        const actual = pruneID(process(base2, new ScenarioNumbering({
             format: '${i} - ${name}'
-        }));
+        }))) as Document[];
 
         expect(actual[0]).toEqual(expected);
     });
