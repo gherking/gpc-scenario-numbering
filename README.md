@@ -19,6 +19,10 @@ The ScenarioNumbering precompiler is responsible for adding an index to all scen
     | language | title     |
     | EN       | Welcome   |
     | FR       | Bienvenue |
+
+  Scenario: Test without tag
+    Given I am on Home page user
+    Then I should be on Home page
 ```
 It will be modified to:
 ```gherkin
@@ -34,6 +38,10 @@ It will be modified to:
     | language | title     |
     | EN       | Welcome   |
     | FR       | Bienvenue |
+
+  Scenario: 2. Test without tag
+  Given I am on Home page user
+  Then I should be on Home page
 ```
 
 ## Configuration

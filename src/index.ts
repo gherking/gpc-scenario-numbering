@@ -21,13 +21,17 @@ class ScenarioNumbering implements PreCompiler {
         };
     }
 
+    private modifyName(element: Element): void {
+         element.name = this.config.format
+         .replace(/\$\{i\}/g, `${++this.i}`)
+         .replace(/\$\{name\}/g, element.name);
+    }
+
     onFeature(feature: Feature) {
         debug("Processing Scenarios of Feature: %s", feature.name)
         feature.elements.forEach((element: Element | Rule) => {
             if (!(element instanceof Background || element instanceof Rule)) {
-                element.name = this.config.format
-                    .replace(/\$\{i\}/g, `${++this.i}`)
-                    .replace(/\$\{name\}/g, element.name);
+                this.modifyName(element);
             }
         });
     }
@@ -36,9 +40,7 @@ class ScenarioNumbering implements PreCompiler {
         debug("Processing Scenarios of Rule: %s", rule.name)
         rule.elements.forEach((element: Element) => {
             if (!(element instanceof Background)) {
-                element.name = this.config.format
-                    .replace(/\$\{i\}/g, `${++this.i}`)
-                    .replace(/\$\{name\}/g, element.name);
+                this.modifyName(element);
             }
         });
     }
