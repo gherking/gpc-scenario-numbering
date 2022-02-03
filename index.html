@@ -1,0 +1,45 @@
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>gpc-scenario-numbering</title><meta name="description" content="Documentation for gpc-scenario-numbering"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">gpc-scenario-numbering</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>gpc-scenario-numbering</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#gpc-scenario-numbering" id="gpc-scenario-numbering" style="color: inherit; text-decoration: none;">
+  <h1>gpc-scenario-numbering</h1>
+</a>
+<p><img src="https://img.shields.io/npm/dw/gpc-scenario-numbering?style=flat-square" alt="Downloads"> <img src="https://img.shields.io/npm/v/gpc-scenario-numbering?label=version%40npm&style=flat-square" alt="Version@npm"> <img src="https://img.shields.io/github/package-json/v/gherking/gpc-scenario-numbering/master?label=version%40git&style=flat-square" alt="Version@git"> <img src="https://img.shields.io/github/workflow/status/gherking/gpc-scenario-numbering/CI/master?label=ci&style=flat-square" alt="CI"> <img src="https://img.shields.io/github/workflow/status/gherking/gpc-scenario-numbering/Docs/master?label=docs&style=flat-square" alt="Docs"></p>
+<p>The ScenarioNumbering precompiler is responsible for adding an index to all scenarios and scenario outlines.</p>
+
+<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+  <h2>Example</h2>
+</a>
+<pre><code class="language-gherkin"><span class="hl-0">  </span><span class="hl-1">@tag1</span><br/><span class="hl-0">  </span><span class="hl-2">Scenario Outline</span><span class="hl-0">:</span><span class="hl-3"> Test language (&lt;language&gt;)</span><br/><span class="hl-0">    </span><span class="hl-2">Given </span><span class="hl-0">I am on Home page </span><span class="hl-4">&lt;language&gt;</span><span class="hl-0"> user</span><br/><span class="hl-0">    </span><span class="hl-2">When </span><span class="hl-4">&lt;language&gt;</span><span class="hl-0"> language is choosen</span><br/><span class="hl-0">    </span><span class="hl-2">Then </span><span class="hl-0">I should be on Home page</span><br/><span class="hl-0">    </span><span class="hl-2">And </span><span class="hl-0">the title should be </span><span class="hl-3">&quot;&lt;title&gt;&quot;</span><br/><br/><span class="hl-0">  </span><span class="hl-1">@tag2</span><br/><span class="hl-0">  </span><span class="hl-2">Examples</span><span class="hl-0">:</span><br/><span class="hl-5">    | language | title     |</span><br/><span class="hl-5">    | EN       | Welcome   |</span><br/><span class="hl-5">    | FR       | Bienvenue |</span><br/><br/><span class="hl-0">  </span><span class="hl-2">Scenario</span><span class="hl-0">:</span><span class="hl-3"> Test without tag</span><br/><span class="hl-0">    </span><span class="hl-2">Given </span><span class="hl-0">I am on Home page user</span><br/><span class="hl-0">    </span><span class="hl-2">Then </span><span class="hl-0">I should be on Home page</span>
+</code></pre>
+<p>It will be modified to:</p>
+<pre><code class="language-gherkin"><span class="hl-0">  </span><span class="hl-1">@tag1</span><br/><span class="hl-0">  </span><span class="hl-2">Scenario Outline</span><span class="hl-0">:</span><span class="hl-3"> 1. Test language (&lt;language&gt;)</span><br/><span class="hl-0">    </span><span class="hl-2">Given </span><span class="hl-0">I am on Home page </span><span class="hl-4">&lt;language&gt;</span><span class="hl-0"> user</span><br/><span class="hl-0">    </span><span class="hl-2">When </span><span class="hl-4">&lt;language&gt;</span><span class="hl-0"> language is choosen</span><br/><span class="hl-0">    </span><span class="hl-2">Then </span><span class="hl-0">I should be on Home page</span><br/><span class="hl-0">    </span><span class="hl-2">And </span><span class="hl-0">the title should be </span><span class="hl-3">&quot;&lt;title&gt;&quot;</span><br/><br/><span class="hl-0">  </span><span class="hl-1">@tag2</span><br/><span class="hl-0">  </span><span class="hl-2">Examples</span><span class="hl-0">:</span><br/><span class="hl-5">    | language | title     |</span><br/><span class="hl-5">    | EN       | Welcome   |</span><br/><span class="hl-5">    | FR       | Bienvenue |</span><br/><br/><span class="hl-0">  </span><span class="hl-2">Scenario</span><span class="hl-0">:</span><span class="hl-3"> 2. Test without tag</span><br/><span class="hl-0">  </span><span class="hl-2">Given </span><span class="hl-0">I am on Home page user</span><br/><span class="hl-0">  </span><span class="hl-2">Then </span><span class="hl-0">I should be on Home page</span>
+</code></pre>
+
+<a href="#configuration" id="configuration" style="color: inherit; text-decoration: none;">
+  <h2>Configuration</h2>
+</a>
+<p>ScenarioNumbering accepts the following configuration:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="center">Type</th>
+<th align="left">Description</th>
+<th align="left">Default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>format</code></td>
+<td align="center"><code>String</code></td>
+<td align="left">The format, how index should be added to the name of the scenario/scenairo outline. Possible tokens: <ul><li><code>${name}</code> the original name</li><li><code>${i}</code> the index</li></ul></td>
+<td align="left"><code>${i}. ${name}</code></td>
+</tr>
+</tbody></table>
+
+<a href="#other" id="other" style="color: inherit; text-decoration: none;">
+  <h2>Other</h2>
+</a>
+<p>This package uses <a href="https://www.npmjs.com/package/debug">debug</a> for logging, use <code>gpc:scenario-numbering</code> :</p>
+<pre><code class="language-shell"><span class="hl-0">DEBUG=gpc:scenario-numbering* gherking ...</span>
+</code></pre>
+<p>For detailed documentation see the <a href="https://gherking.github.io/gpc-scenario-numbering/">TypeDocs documentation</a>.</p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-class"><a href="classes/export_.html" class="tsd-kind-icon">export=</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li><li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
