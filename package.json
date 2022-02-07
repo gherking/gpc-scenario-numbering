@@ -1,6 +1,6 @@
 {
   "name": "gpc-scenario-numbering",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This GherKing precompiler is responsible to add an index to all scenario and scenario outlines.",
   "main": "index.js",
   "types": "index.d.ts",
