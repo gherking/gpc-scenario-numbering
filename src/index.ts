@@ -19,6 +19,9 @@ class ScenarioNumbering implements PreCompiler {
             ...DEFAULT_CONFIG,
             ...(config || {}),
         };
+        if (!this.config.format) {
+            throw new Error ("Required parameter 'format' must not be empty")
+        }
     }
 
     private modifyName(element: Element): void {

@@ -32,4 +32,10 @@ describe("Scenario numbering", ()=> {
 
         expect(actual[0]).toEqual(expected);
     });
+
+    test("should throw error on empty format", async () => {
+        expect(() => new ScenarioNumbering({
+            format: ''
+        })).toThrow("Required parameter 'format' must not be empty");
+    });
 });
